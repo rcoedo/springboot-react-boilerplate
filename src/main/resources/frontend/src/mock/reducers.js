@@ -1,6 +1,6 @@
 import { List } from "immutable";
 import { combineReducers } from "redux";
-import { MOCK_ACTION } from "js/mock/actions";
+import { MOCK_ACTION } from "src/mock/actions";
 
 function texts(state = new List(), action) {
   switch (action.type) {

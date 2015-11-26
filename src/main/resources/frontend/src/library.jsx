@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { toJS } from "immutable";
 import { connect } from "react-redux";
-import { mockAction } from "js/mock/actions";
+import { mockAction } from "src/mock/actions";
 
 class Library extends Component {
   render() {

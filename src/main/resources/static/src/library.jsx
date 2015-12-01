@@ -6,7 +6,6 @@ import { mockAction } from "src/mock/actions";
 class Library extends Component {
   render() {
     const { dispatch, texts } = this.props;
-    console.log(texts);
     return(
       <div>
         <div>

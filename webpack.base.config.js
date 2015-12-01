@@ -51,17 +51,18 @@ var config = {
   resolve: {
     extensions: ["", ".scss", ".js", ".jsx"],
     alias: {
-      "src": path.resolve(__dirname, "src/main/resources/frontend/src/")
+      "src": path.resolve(__dirname, "src/main/resources/static/src/")
     }
   },
 
-  entry: [
-    path.resolve(__dirname, "src/main/resources/frontend/src/index.js")
-  ],
+  entry: {
+    server: path.resolve(__dirname, "src/main/resources/static/src/server.jsx"),
+    client: path.resolve(__dirname, "src/main/resources/static/src/client.jsx")
+  },
 
   output: {
-    path: path.resolve(__dirname, "src/main/resources/static/"),
-    filename: "app.js"
+    path: path.resolve(__dirname, "src/main/resources/static/dist/"),
+    filename: "[name].js"
   },
 
   module: {

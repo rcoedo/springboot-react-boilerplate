@@ -19,7 +19,7 @@ public class ApplicationContext {
     NashornScriptEngine nashorn() throws ScriptException {
         NashornScriptEngine nashorn = (NashornScriptEngine) new ScriptEngineManager().getEngineByName("nashorn");
         nashorn.eval(read("static/nashorn-polyfill.js"));
-        nashorn.eval(read("static/dist/server.js"));
+        nashorn.eval(read("static/server.js"));
         return nashorn;
     }
 

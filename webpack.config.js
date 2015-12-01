@@ -1,5 +1,5 @@
-var config = require("./webpack.base.config")
+var config = require("./webpack.base.config");
 
 module.exports = config("local")
-  // .hotReload()
+  .compileServer()
   .build();

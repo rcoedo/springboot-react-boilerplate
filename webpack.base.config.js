@@ -6,8 +6,13 @@ var path = require("path");
 var enableHotReload = function(config) {
   config.output.publicPath = "http://localhost:4001/";
 
-  config.entry.unshift("webpack/hot/dev-server");
-  config.entry.unshift("webpack-dev-server/client?" + config.output.publicPath);
+  config.entry = [
+    "webpack-dev-server/client?" + config.output.publicPath,
+    "webpack/hot/dev-server",
+    path.resolve(__dirname, "src/main/javascript/client.jsx")
+  ];
+
+  config.output.filename = "client.js";
 
   config.plugins.push(new Webpack.NoErrorsPlugin());
   config.plugins.push(new Webpack.HotModuleReplacementPlugin());
@@ -51,17 +56,16 @@ var config = {
   resolve: {
     extensions: ["", ".scss", ".js", ".jsx"],
     alias: {
-      "src": path.resolve(__dirname, "src/main/resources/static/src/")
+      "src": path.resolve(__dirname, "src/main/javascript/")
     }
   },
 
   entry: {
-    server: path.resolve(__dirname, "src/main/resources/static/src/server.jsx"),
-    client: path.resolve(__dirname, "src/main/resources/static/src/client.jsx")
+    client: path.resolve(__dirname, "src/main/javascript/client.jsx")
   },
 
   output: {
-    path: path.resolve(__dirname, "src/main/resources/static/dist/"),
+    path: path.resolve(__dirname, "src/main/resources/static/"),
     filename: "[name].js"
   },
 
@@ -75,7 +79,8 @@ var config = {
 module.exports = function(env) {
   var options = {
     uglify: false,
-    hotReload: false
+    hotReload: false,
+    server: false
   };
 
   var hotReload = function() {
@@ -85,6 +90,11 @@ module.exports = function(env) {
 
   var uglify = function() {
     options.uglify = true;
+    return this;
+  };
+
+  var compileServer = function() {
+    options.server = true;
     return this;
   };
 
@@ -108,12 +118,17 @@ module.exports = function(env) {
       config = enableExtractText(config);
     }
 
+    if (options.server) {
+      config.entry.server = path.resolve(__dirname, "src/main/javascript/server.jsx");
+    }
+
     return config;
   };
 
   return {
     build: build,
     hotReload: hotReload,
+    compileServer,
     uglify: uglify
   };
 };

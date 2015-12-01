@@ -9,7 +9,7 @@ class Library extends Component {
     return(
       <div>
         <div>
-          {texts.length.toString()}
+            {texts.length.toString()}
         </div>
         <div>
           <a href="#" onClick={() => dispatch(mockAction("test"))}>click here</a>

@@ -28,7 +28,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "./webpack.dev.server.js"
+    "watch": "./webpack.dev.server.js",
+    "compile": "webpack"
   },
   "repository": {
     "type": "git",

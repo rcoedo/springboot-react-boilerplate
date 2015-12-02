@@ -1,6 +1,6 @@
 import { createStore } from "redux";
-import { Root, loadInitialStateFromWindow, renderApp } from "src/build/utils";
-import reducers from "src/reducers";
+import { Root, loadInitialStateFromWindow, renderApp } from "entrypoint/utils";
+import reducers from "app/reducers";
 
 const store = createStore(reducers, loadInitialStateFromWindow());
 renderApp(<Root store={store}/>);

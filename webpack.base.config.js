@@ -9,7 +9,7 @@ var enableHotReload = function(config) {
   config.entry = [
     "webpack-dev-server/client?" + config.output.publicPath,
     "webpack/hot/dev-server",
-    path.resolve(__dirname, "src/main/javascript/build/dev-client.jsx")
+    path.resolve(__dirname, "src/main/javascript/entrypoint/dev-client.jsx")
   ];
 
   config.output.filename = "client.js";
@@ -56,12 +56,13 @@ var config = {
   resolve: {
     extensions: ["", ".scss", ".js", ".jsx"],
     alias: {
-      "src": path.resolve(__dirname, "src/main/javascript/")
+      "app": path.resolve(__dirname, "src/main/javascript/app/"),
+      "entrypoint": path.resolve(__dirname, "src/main/javascript/entrypoint/")
     }
   },
 
   entry: {
-    client: path.resolve(__dirname, "src/main/javascript/build/client.jsx")
+    client: path.resolve(__dirname, "src/main/javascript/entrypoint/client.jsx")
   },
 
   output: {
@@ -119,7 +120,7 @@ module.exports = function(env) {
     }
 
     if (options.server) {
-      config.entry.server = path.resolve(__dirname, "src/main/javascript/build/server.jsx");
+      config.entry.server = path.resolve(__dirname, "src/main/javascript/entrypoint/server.jsx");
     }
 
     return config;

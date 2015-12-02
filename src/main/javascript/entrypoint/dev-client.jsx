@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { createStore, compose } from "redux";
 import { devTools, persistState } from "redux-devtools";
 import { DevTools, DebugPanel, LogMonitor } from "redux-devtools/lib/react";
-import { Root, loadInitialStateFromWindow, renderApp } from "src/build/utils";
-import reducers from "src/reducers";
+import { Root, loadInitialStateFromWindow, renderApp } from "entrypoint/utils";
+import reducers from "app/reducers";
 
 const store = compose(
   devTools(),

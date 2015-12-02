@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { fromJS } from "immutable";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import App from "src/app";
+import App from "app/app";
 
 export function immutabilifyState(state) {
   let newState = {};

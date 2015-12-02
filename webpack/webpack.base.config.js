@@ -130,7 +130,7 @@ module.exports = function(env) {
   return {
     build: build,
     hotReload: hotReload,
-    compileServer,
+    compileServer: compileServer,
     uglify: uglify
   };
 };

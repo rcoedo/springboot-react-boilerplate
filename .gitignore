@@ -16,3 +16,4 @@ target/
 node_modules/
 src/main/resources/static/client.js
 src/main/resources/static/server.js
+npm-debug.log

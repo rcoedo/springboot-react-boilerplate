@@ -2,6 +2,7 @@ var Webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require("path");
 
+var basedir = path.resolve(__dirname, "../");
 
 var enableHotReload = function(config) {
   config.output.publicPath = "http://localhost:4001/";
@@ -9,7 +10,7 @@ var enableHotReload = function(config) {
   config.entry = [
     "webpack-dev-server/client?" + config.output.publicPath,
     "webpack/hot/dev-server",
-    path.resolve(__dirname, "src/main/javascript/entrypoint/dev-client.jsx")
+    path.resolve(basedir, "src/main/javascript/entrypoint/dev-client.jsx")
   ];
 
   config.output.filename = "client.js";
@@ -56,17 +57,17 @@ var config = {
   resolve: {
     extensions: ["", ".scss", ".js", ".jsx"],
     alias: {
-      "app": path.resolve(__dirname, "src/main/javascript/app/"),
-      "entrypoint": path.resolve(__dirname, "src/main/javascript/entrypoint/")
+      "app": path.resolve(basedir, "src/main/javascript/app/"),
+      "entrypoint": path.resolve(basedir, "src/main/javascript/entrypoint/")
     }
   },
 
   entry: {
-    client: path.resolve(__dirname, "src/main/javascript/entrypoint/client.jsx")
+    client: path.resolve(basedir, "src/main/javascript/entrypoint/client.jsx")
   },
 
   output: {
-    path: path.resolve(__dirname, "src/main/resources/static/"),
+    path: path.resolve(basedir, "src/main/resources/static/"),
     filename: "[name].js"
   },
 
@@ -120,7 +121,7 @@ module.exports = function(env) {
     }
 
     if (options.server) {
-      config.entry.server = path.resolve(__dirname, "src/main/javascript/entrypoint/server.jsx");
+      config.entry.server = path.resolve(basedir, "src/main/javascript/entrypoint/server.jsx");
     }
 
     return config;

@@ -8,8 +8,7 @@
 <h1>!!!!</h1>
 <div id="app" th:utext="${html}"></div>
 <script th:utext="${data}"></script>
-<script src='http://localhost:4001/client.js'></script>
-<!--<script src="/client.js"></script>-->
+<script th:src="${client}"></script>
 </body>
 </html>
 

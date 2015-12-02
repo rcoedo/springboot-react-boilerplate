@@ -1,0 +1,21 @@
+js:
+  client: /client.js
+
+---
+
+spring:
+  profiles: local
+js:
+  client: http://localhost:4001/client.js
+
+---
+
+spring:
+  profiles: development
+
+---
+
+spring:
+  profiles: production
+
+---

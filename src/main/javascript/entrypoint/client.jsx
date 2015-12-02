@@ -1,3 +1,4 @@
+import React from "react";
 import { createStore } from "redux";
 import { Root, loadInitialStateFromWindow, renderApp } from "entrypoint/utils";
 import reducers from "app/reducers";

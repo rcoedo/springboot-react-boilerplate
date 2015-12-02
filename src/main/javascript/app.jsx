@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { toJS } from "immutable";
 import { connect } from "react-redux";
-import { mockAction } from "src/mock/actions";
+import { mockAction } from "src/actions";
 
-class Library extends Component {
+class App extends Component {
   render() {
     const { dispatch, texts } = this.props;
     return(
@@ -25,4 +25,4 @@ function mapProps(state) {
   };
 }
 
-export default connect(mapProps)(Library);
+export default connect(mapProps)(App);

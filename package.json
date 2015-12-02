@@ -21,12 +21,14 @@
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0",
     "redux": "^3.0.4",
+    "redux-devtools": "^2.1.5",
     "redux-thunk": "^1.0.0",
     "webpack": "^1.12.8",
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "./webpack.dev.server.js"
   },
   "repository": {
     "type": "git",

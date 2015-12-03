@@ -19,4 +19,4 @@ src/main/resources/static/server.js
 npm-debug.log
 .gradle/
 build/
-
+.envrc

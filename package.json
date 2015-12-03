@@ -28,9 +28,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "./webpack/webpack.dev.server.js",
-    "compile": "webpack --config webpack/webpack.dev.js",
-    "package": "webpack --config webpack/webpack.prod.js"
+    "watch": "./webpack/webpack.dev.server.babel.js",
+    "compile": "webpack --config webpack/webpack.dev.babel.js",
+    "package": "webpack --config webpack/webpack.prod.babel.js"
   },
   "repository": {
     "type": "git",

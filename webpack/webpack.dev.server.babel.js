@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var baseConfig = require("./webpack.base.config");
+var baseConfig = require("./webpack.base.config.babel");
 
 var config = baseConfig("local")
   .hotReload()

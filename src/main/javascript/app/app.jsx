@@ -21,7 +21,7 @@ class App extends Component {
 
 function mapProps(state) {
   return {
-    texts: state.texts.toJS()
+    texts: state.texts
   };
 }
 

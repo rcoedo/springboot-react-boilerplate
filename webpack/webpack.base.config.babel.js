@@ -79,25 +79,12 @@ var config = {
 };
 
 module.exports = function(env) {
-  var options = {
-    uglify: false,
-    hotReload: false,
-    server: false
-  };
-
-  var hotReload = function() {
-    options.hotReload = true;
-    return this;
-  };
-
-  var uglify = function() {
-    options.uglify = true;
-    return this;
-  };
-
-  var compileServer = function() {
-    options.server = true;
-    return this;
+  var options = {};
+  var optionFactory = function(option) {
+    return function() {
+      options[option] = true;
+      return this;
+    };
   };
 
   var build = function() {
@@ -110,17 +97,10 @@ module.exports = function(env) {
       })
     );
 
-    if (options.uglify) {
-      config = enableUglify(config);
-    }
+    config = options.uglify ? enableUglify(config) : config;
+    config = options.hotReload ? enableHotReload(config) : enableExtractText(config);
 
-    if (options.hotReload) {
-      config = enableHotReload(config);
-    } else {
-      config = enableExtractText(config);
-    }
-
-    if (options.server) {
+    if (options.compileServer) {
       config.entry.server = path.resolve(basedir, "src/main/javascript/entrypoint/server.jsx");
     }
 
@@ -129,8 +109,8 @@ module.exports = function(env) {
 
   return {
     build: build,
-    hotReload: hotReload,
-    compileServer: compileServer,
-    uglify: uglify
+    hotReload: optionFactory("hotReload"),
+    compileServer: optionFactory("compileServer"),
+    uglify: optionFactory("uglify")
   };
 };

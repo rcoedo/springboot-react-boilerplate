@@ -1,5 +1,9 @@
-apply plugin: "java"
-apply plugin: "spring-boot"
+allprojects{
+    apply plugin: "java"
+    apply plugin: "spring-boot"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
 
 buildscript {
     repositories {
@@ -18,9 +22,6 @@ jar {
 repositories {
     mavenCentral()
 }
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")

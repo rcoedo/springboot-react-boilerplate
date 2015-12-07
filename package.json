@@ -28,9 +28,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "ENV=watch ./webpack/server.js",
-    "dev": "ENV=dev webpack --config webpack/config.babel.js",
-    "prod": "ENV=prod webpack --config webpack/config.babel.js"
+    "local": "ENV=local ./webpack/server.js",
+    "development": "ENV=development webpack --config webpack/config.babel.js",
+    "production": "ENV=production webpack --config webpack/config.babel.js"
   },
   "repository": {
     "type": "git",

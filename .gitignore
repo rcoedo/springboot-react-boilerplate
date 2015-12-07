@@ -21,3 +21,4 @@ npm-debug.log
 build/
 .envrc
 TODO.org
+.tern-port

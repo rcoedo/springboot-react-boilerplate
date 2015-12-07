@@ -5,16 +5,16 @@ function configBuilder(env) {
 
   config.plugins.push(Utils.getEnvPlugin(env));
 
-  if (env === "watch") {
+  if (env === "local") {
     Utils.enableHotReload(config);
   }
 
-  if (env === "dev") {
+  if (env === "development") {
     Utils.enableExtractText(config);
     Utils.compileServer(config);
   }
 
-  if (env === "prod") {
+  if (env === "production") {
     Utils.enableExtractText(config);
     Utils.compileServer(config);
     Utils.enableUglify(config);

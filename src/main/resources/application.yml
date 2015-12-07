@@ -5,6 +5,7 @@ js:
 
 spring:
   profiles: local
+
 js:
   client: http://localhost:4000/client.js
 

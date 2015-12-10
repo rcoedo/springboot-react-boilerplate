@@ -1,5 +1,5 @@
 js:
-  client: /client.js
+  bundle: /bundle.js
 
 ---
 
@@ -7,7 +7,7 @@ spring:
   profiles: local
 
 js:
-  client: http://localhost:4000/client.js
+  bundle: http://localhost:4000/bundle.js
 
 ---
 

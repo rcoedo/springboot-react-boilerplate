@@ -11,8 +11,8 @@ function texts(state = [], action) {
   }
 }
 
-const mockApp = combineReducers({
+const reducers = {
   texts
-});
+};
 
-export default mockApp;
+export default reducers;

@@ -12,6 +12,9 @@
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-2": "^6.3.13",
+    "babel-preset-stage-3": "^6.3.13",
+    "bluebird": "^3.0.6",
     "extract-text-webpack-plugin": "^0.9.1",
     "history": "^1.13.1",
     "immutable": "^3.7.5",
@@ -22,13 +25,15 @@
     "react-router": "^1.0.0",
     "redux": "^3.0.4",
     "redux-devtools": "^2.1.5",
+    "redux-simple-router": "^1.0.0",
     "redux-thunk": "^1.0.0",
     "webpack": "^1.12.8",
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "local": "ENV=local ./webpack/server.js",
+    "watch": "ENV=watch ./webpack/server.js",
+    "local": "ENV=local webpack --config webpack/config.babel.js",
     "development": "ENV=development webpack --config webpack/config.babel.js",
     "production": "ENV=production webpack --config webpack/config.babel.js"
   },

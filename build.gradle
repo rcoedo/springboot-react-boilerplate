@@ -50,6 +50,6 @@ node {
 }
 
 task processJs(type: NpmTask, dependsOn: "npmInstall") {
-    args = ["run", System.getProperty("spring.profiles.active")]
+    args = ["run", System.getProperty("spring.profiles.active") ?: "development"]
 }
 processResources.dependsOn "processJs"

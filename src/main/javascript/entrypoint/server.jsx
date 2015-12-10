@@ -1,10 +1,3 @@
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import { createStore } from "redux";
-import { Root } from "entrypoint/utils";
-import reducers from "app/reducers";
+import  { serverSideRender } from "entrypoint/render";
 
-window.App = function(state) {
-  const store = createStore(reducers, state);
-  return ReactDOMServer.renderToString(<Root store={store}/>);
-};
+window.serverSideRender = serverSideRender;

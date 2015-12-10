@@ -1,26 +1,42 @@
-import * as Utils from "./utils";
+import { webpackConfig } from "./config-builder";
 
 function configBuilder(env) {
-  let config = Utils.base();
-
-  config.plugins.push(Utils.getEnvPlugin(env));
+  if (env === "watch") {
+    return webpackConfig({
+      hotReload: true,
+      env: {
+        __LOCAL__: true,
+        __DEV_TOOLS__: true,
+        __SSR_ENABLED__: false
+      }});
+  }
 
   if (env === "local") {
-    Utils.enableHotReload(config);
+    return webpackConfig({
+      env: {
+        __LOCAL__: true,
+        __DEV_TOOLS__: true,
+        __SSR_ENABLED__: false
+      }});
   }
 
   if (env === "development") {
-    Utils.enableExtractText(config);
-    Utils.compileServer(config);
+    return webpackConfig({
+      env: {
+        __DEVELOPMENT__: true,
+        __SSR_ENABLED__: true
+      }});
   }
 
   if (env === "production") {
-    Utils.enableExtractText(config);
-    Utils.compileServer(config);
-    Utils.enableUglify(config);
+    return webpackConfig({
+      uglify: true,
+      env: {
+        __PRODUCTION__: true,
+        __SSR_ENABLED__: true
+      }});
   }
-
-  return config;
+  throw "Could not find configuration for env " + env;
 };
 
 export default configBuilder(process.env.ENV);

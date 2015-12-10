@@ -1,6 +1,10 @@
 var global = this;
 
-var window = {};
+var window = {
+    __SSR__: true
+};
+
+var process = {};
 var console = {};
 
 console.debug = print;

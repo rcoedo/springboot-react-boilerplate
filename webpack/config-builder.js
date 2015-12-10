@@ -4,11 +4,11 @@ import path from "path";
 
 const basedir = path.resolve(__dirname, "../");
 
-export function resolve(pth) {
+function resolve(pth) {
   return path.resolve(basedir, pth);
 }
 
-export function base() {
+function base() {
   return {
     resolve: {
       extensions: ["", ".scss", ".js", ".jsx"],
@@ -18,13 +18,13 @@ export function base() {
       }
     },
 
-    entry: {
-      client: resolve("src/main/javascript/entrypoint/client.jsx")
-    },
+    entry: [
+      resolve("src/main/javascript/entrypoint/entry.js")
+    ],
 
     output: {
       path: resolve("src/main/resources/static/"),
-      filename: "[name].js"
+      filename: "bundle.js"
     },
 
     module: {
@@ -35,27 +35,26 @@ export function base() {
   };
 }
 
-export function enableHotReload(config) {
-  config.entry = [
-    "webpack-dev-server/client?" + config.output.publicPath,
-    "webpack/hot/dev-server",
-    resolve("src/main/javascript/entrypoint/dev-client.jsx")
-  ];
-  config.output.filename = "client.js";
+function enableHotReload(config) {
   config.output.publicPath = "http://localhost:4000/";
+
+  config.entry.unshift("webpack/hot/dev-server");
+  config.entry.unshift("webpack-dev-server/client?" + config.output.publicPath);
+
   config.plugins.push(new Webpack.NoErrorsPlugin());
   config.plugins.push(new Webpack.HotModuleReplacementPlugin());
+
   config.module.loaders.push({test: /\.scss$/, loader: "style-loader!css-loader!postcss-loader!sass-loader"});
   config.module.loaders.push(
-    {test: /\.jsx?$/, loaders: ["react-hot", "babel?presets[]=react,presets[]=es2015"], exclude: /(node_modules|bower_components)/}
+    {test: /\.jsx?$/, loaders: ["react-hot", "babel?presets[]=react,presets[]=es2015,presets[]=stage-3"], exclude: /(node_modules|bower_components)/}
   );
 }
 
-export function enableUglify(config) {
+function enableUglify(config) {
   config.plugins.push(new Webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
 }
 
-export function enableExtractText(config) {
+function enableExtractText(config) {
   config.module.loaders.push(
     {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!sass-loader")}
   );
@@ -65,15 +64,26 @@ export function enableExtractText(config) {
   config.plugins.push(new ExtractTextPlugin("application.css"));
 }
 
-export function compileServer(config) {
-  config.entry.server = resolve("src/main/javascript/entrypoint/server.jsx");
+function getProcessPlugin(env) {
+  return new Webpack.DefinePlugin({
+    "process.env": env
+  });
 }
 
-export function getEnvPlugin(env) {
-  return new Webpack.DefinePlugin({
-    "process.env": {
-      "APP_ENV": "'" + env + "'",
-      "NODE_ENV": JSON.stringify(env)
-    }
-  });
+export function webpackConfig(options) {
+  let config = base();
+
+  if (options.hotReload) {
+    enableHotReload(config);
+  } else {
+    enableExtractText(config);
+  }
+
+  if (options.uglify) {
+    enableUglify(config);
+  }
+
+  config.plugins.push(getProcessPlugin(options.env));
+
+  return config;
 }

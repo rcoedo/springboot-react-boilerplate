@@ -1,12 +1,12 @@
 import React from "react";
 import { Route } from "react-router";
-import App from "app/app";
-import TodoList from "app/todo-list";
-import About from "app/about";
+import App from "components/app";
+import Counter from "components/counter";
+import About from "components/about";
 
 const routes = (
   <Route component={App}>
-    <Route path="/" component={TodoList}/>
+    <Route path="/" component={Counter}/>
     <Route path="about" component={About}/>
   </Route>
 );

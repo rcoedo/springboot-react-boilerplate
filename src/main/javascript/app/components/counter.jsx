@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { pushPath } from "redux-simple-router";
-import { mockAction } from "app/actions";
-import Link from "app/common/link";
+import { add } from "app/actions";
+import Link from "components/common/link";
 
-class TodoList extends Component {
+class Counter extends Component {
   constructor() {
     super();
     this.add = this.add.bind(this);
@@ -12,16 +12,16 @@ class TodoList extends Component {
 
   add(event) {
     event.preventDefault();
-    this.props.dispatch(mockAction("test"));
+    this.props.dispatch(add());
   }
 
   render() {
-    const { texts } = this.props
+    const { count } = this.props
     return(
       <div>
         <div>
           <button onClick={this.add} type="button">Add</button>&nbsp;
-          {texts.length.toString()}
+          {count}
         </div>
         <div>
           <Link href="/about">About this application</Link>
@@ -33,8 +33,8 @@ class TodoList extends Component {
 
 function mapProps(state) {
   return {
-    texts: state.texts
+    count: state.count
   };
 }
 
-export default connect(mapProps)(TodoList);
+export default connect(mapProps)(Counter);

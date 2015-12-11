@@ -14,6 +14,7 @@ function base() {
       extensions: ["", ".scss", ".js", ".jsx"],
       alias: {
         "app": resolve("src/main/javascript/app/"),
+        "components": resolve("src/main/javascript/app/components"),
         "entrypoint": resolve("src/main/javascript/entrypoint/")
       }
     },

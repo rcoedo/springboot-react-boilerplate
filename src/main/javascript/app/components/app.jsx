@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Link from "app/common/link";
-import Header from "app/header";
-import Footer from "app/footer";
+import Link from "components/common/link";
+import Header from "components/header";
+import Footer from "components/footer";
 
 export default class App extends Component {
   render() {

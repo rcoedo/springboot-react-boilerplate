@@ -1,18 +1,18 @@
 import { List } from "immutable";
 import { combineReducers } from "redux";
-import { MOCK_ACTION } from "app/actions";
+import { ADD_ACTION } from "app/actions";
 
-function texts(state = [], action) {
+function count(state = 0, action) {
   switch (action.type) {
-  case MOCK_ACTION:
-    return [...state, action.text];
+  case ADD_ACTION:
+    return state + 1;
   default:
     return state;
   }
 }
 
 const reducers = {
-  texts
+  count
 };
 
 export default reducers;

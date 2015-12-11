@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import { mockAction } from "app/actions";
-
-
-    //const { dispatch, texts } = this.props;
-//        <div>
-//            {texts.length.toString()}
-//        </div>
-//        <div>
-//          <a href="#" onClick={() => dispatch(mockAction("test"))}>click here</a>
-//        </div>
+import Link from "app/common/link";
+import Header from "app/header";
+import Footer from "app/footer";
 
 export default class App extends Component {
   render() {
     return(
       <div>
-        {this.props.children}
+        <Header />
+        <div>
+          {this.props.children}
+        </div>
+        <Footer />
       </div>
     );
   }

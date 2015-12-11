@@ -46,7 +46,7 @@ function enableHotReload(config) {
 
   config.module.loaders.push({test: /\.scss$/, loader: "style-loader!css-loader!postcss-loader!sass-loader"});
   config.module.loaders.push(
-    {test: /\.jsx?$/, loaders: ["react-hot", "babel?presets[]=react,presets[]=es2015,presets[]=stage-3"], exclude: /(node_modules|bower_components)/}
+    {test: /\.jsx?$/, loaders: ["react-hot", "babel?presets[]=react,presets[]=es2015,presets[]=stage-0"], exclude: /(node_modules|bower_components)/}
   );
 }
 

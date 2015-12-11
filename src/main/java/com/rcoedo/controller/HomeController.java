@@ -30,7 +30,7 @@ public class HomeController {
         return "layout";
     }
 
-    @RequestMapping("/testing")
+    @RequestMapping("/about")
     public String testing(Model model) throws ScriptException {
         model.addAttribute("bundle", bundle);
         model.addAttribute("data", "window.__INITIAL_STATE__ = {texts: []}");
